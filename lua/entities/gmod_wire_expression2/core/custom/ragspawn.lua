@@ -23,12 +23,11 @@ hook.Add("PlayerInitialSpawn", "ragspawncore_plyinitspawn", function(ply, trans)
 	ply.lastRagSpawntime = 0
 end)
 
-__e2setcost(50)
-
 local function RagCanSpawn(ply)
 	return ply.ragsBursted < GetConVar("sbox_E2_maxRagsPerSecond"):GetFloat() and true or false
 end
 
+__e2setcost(1)
 
 e2function number ragCanSpawn()
 	return RagCanSpawn(self.player) and 1 or 0
@@ -73,6 +72,8 @@ function RagSpawn(model, pos, ang, frozen, chip)
 	end
 	return ent
 end
+
+__e2setcost(40)
 
 e2function entity ragSpawn(string model, vector pos, angle ang, number frozen)
 	if RagCanSpawn(self.player) then
