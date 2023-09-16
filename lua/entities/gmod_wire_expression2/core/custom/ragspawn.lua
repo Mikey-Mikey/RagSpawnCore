@@ -44,7 +44,9 @@ end
 function RagSpawn(model, pos, ang, frozen, chip)
 	local ent = ents.Create("prop_ragdoll")
 	ent:SetModel(model)
-
+	if CPPI then
+		ent:CPPISetOwner(chip.player)
+	end
 	if pos then
 		ent:SetPos(pos)
 	else
